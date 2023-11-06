@@ -21,7 +21,7 @@ def dummy_enc(data_df):
                          columns=['surgery', 'age', 'temp_of_extremities', 'peripheral_pulse', 'mucous_membrane',
                                   'capillary_refill_time', 'pain', 'peristalsis', 'abdominal_distention',
                                   'nasogastric_tube', 'nasogastric_reflux', 'rectal_exam_feces', 'abdomen',
-                                  'abdomo_appearance', 'surgical_lesion', 'cp_data', 'outcome'], dtype = int)
+                                  'abdomo_appearance', 'surgical_lesion', 'cp_data'], dtype = int)
     op = input("Handle Missing Values(y/n): ")
     if op == 'y':
         #Use Data Imputation
