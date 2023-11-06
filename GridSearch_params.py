@@ -9,13 +9,14 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
 from sklearn.naive_bayes import CategoricalNB
 
+
 def split_data(data_red, labels):
     X_Train, X_Test, y_train, y_test = train_test_split(data_red, labels, test_size=0.2, random_state=42)
     return X_Train, X_Test, y_train, y_test
 
 
 # Searching the Best set of parameters for Decision Tree
-def grid_search_dt(X_train,  y_train):
+def grid_search_dt(X_train, y_train):
     dt = DecisionTreeClassifier(random_state=42)
     param_grid_dt = [
         {
@@ -58,12 +59,12 @@ def grid_search_lr(X_train, y_train):
     lr = LogisticRegression(random_state=42)
     param_grid_lr = [
         {
-            'penalty' : [None, 'l2'],
-            'C' : [1, 1.1, 1.2, 1.3, 1.4, 1.5, 2.0],
-            'solver' : ['lbfgs', 'liblinear', 'newton-cg', 'newton-cholesky', 'sag' ,'saga'],
+            'penalty': [None, 'l2'],
+            'C': [1, 1.1, 1.2, 1.3, 1.4, 1.5, 2.0],
+            'solver': ['lbfgs', 'liblinear', 'newton-cg', 'newton-cholesky', 'sag', 'saga'],
         }
     ]
-    gs_lr = GridSearchCV(lr, param_grid_lr, scoring='accuracy', cv = 5, n_jobs=-1)
+    gs_lr = GridSearchCV(lr, param_grid_lr, scoring='accuracy', cv=5, n_jobs=-1)
     gs_lr.fit(X_train, y_train)
     print("Optimal Random Forest Tree Parameters: \n\n")
     print(gs_lr.best_params_)
@@ -75,14 +76,14 @@ def grid_search_svm(X_train, y_train):
     svc = SVC(random_state=42)
     param_grid_svc = [
         {
-            'C' : [1, 1.2, 1.3, 1.4, 1.5, 2.0],
-            'kernel' : ['linear', 'poly', 'rbf', 'sigmoid'],
-            'gamma' : ['scale', 'auto'],
-            'shrinking' : [True, False],
-            'decision_function_shape' : ['ovo', 'ovr']
+            'C': [1, 1.2, 1.3, 1.4, 1.5, 2.0],
+            'kernel': ['linear', 'poly', 'rbf', 'sigmoid'],
+            'gamma': ['scale', 'auto'],
+            'shrinking': [True, False],
+            'decision_function_shape': ['ovo', 'ovr']
         }
     ]
-    gr_svm = GridSearchCV(svc, param_grid_svc, scoring = 'accuracy', cv = 5, n_jobs=-1)
+    gr_svm = GridSearchCV(svc, param_grid_svc, scoring='accuracy', cv=5, n_jobs=-1)
     gr_svm.fit(X_train, y_train)
     print("Optimal Random Forest Tree Parameters: \n\n")
     print(gr_svm.best_params_)
@@ -94,11 +95,11 @@ def grid_search_nb(X_train, y_train):
     nb = CategoricalNB()
     param_grid_nb = [
         {
-            'alpha' : [1, 1.1, 1.2, 1.3, 1.5, 1.7, 2.0, 2.5],
-            'fit_prior' : [True, False],
+            'alpha': [1, 1.1, 1.2, 1.3, 1.5, 1.7, 2.0, 2.5],
+            'fit_prior': [True, False],
         }
     ]
-    gr_nb = GridSearchCV(nb, param_grid_nb, cv = 5, scoring = 'accuracy')
+    gr_nb = GridSearchCV(nb, param_grid_nb, cv=5, scoring='accuracy')
     gr_nb.fit(X_train, y_train)
     print("Optimal Random Forest Tree Parameters: \n\n")
     print(gr_nb.best_params_)
