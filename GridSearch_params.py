@@ -99,7 +99,7 @@ def grid_search_nb(X_train, y_train):
             'fit_prior': [True, False],
         }
     ]
-    gr_nb = GridSearchCV(nb, param_grid_nb, cv=5, scoring='accuracy')
+    gr_nb = GridSearchCV(nb, param_grid_nb, cv=5, scoring='accuracy', n_jobs=-1)
     gr_nb.fit(X_train, y_train)
     print("Optimal Naive Bayes Classifier Parameters: \n\n")
     print(gr_nb.best_params_)
@@ -114,7 +114,7 @@ def grid_search_gb(X_train, y_train):
             'learning_rate' : [0.1, 0.01, 0.02]
         }
     ]
-    gr_nb = GridSearchCV(gb, param_grid_gb, cv=5, scoring='accuracy')
+    gr_nb = GridSearchCV(gb, param_grid_gb, cv=5, scoring='accuracy', n_jobs=-1)
     gr_nb.fit(X_train, y_train)
     print("Optimal Gradient Boosting Parameters: \n\n")
     print(gr_nb.best_params_)
