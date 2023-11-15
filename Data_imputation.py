@@ -25,7 +25,7 @@ def median_imputer(data_tf):
     si_med = SimpleImputer(strategy='median')
     data_headers = list(data_tf.columns.values)
     data_imp_med = si_med.fit_transform(data_tf)
-    data_imp_med_df = pd.DataFrame(data_imp_med, columns=data_headers)
+    data_imp_med_df = pd.DataFrame(data_imp_med)
     return data_imp_med_df
 
 
