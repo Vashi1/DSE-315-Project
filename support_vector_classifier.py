@@ -47,7 +47,7 @@ def svm_kn_classifier_pca_kfold(x_data, y_data,x_tr, x_te, y_tr, y_te):
     nested_score_acc = cross_val_score(svm_cl_kn_pca, X=x_data, y=y_data, cv=outer_cv, scoring=acc_scorer)
     print(f"\tAccuracy Score: {nested_score_acc.mean():.2f}")
     print("Plotting the Confusion Matrix")
-    y_pr = cross_val_predict(svm_cl_kn_pca, x_te, y_te)
+    y_pr = cross_val_predict(svm_cl_kn_pca, x_te, y_te, cv = outer_cv)
     cormat = confusion_matrix(y_te, y_pr)
     sns.heatmap(cormat, annot=True, fmt='g')
     plt.savefig("Implementing Support Vector Classifier on Data with Dummy Encoding with KNN-Imputation and PCA Feature Selection with K-Fold Cross Validation.png")
@@ -88,7 +88,7 @@ def svm_kn_classifier_pca_stratfold(x_data, y_data, x_tr, x_te, y_tr, y_te):
     nested_score_acc = cross_val_score(lr_cl_kn_pca_stratf, X=x_data, y=y_data, cv=outer_cv, scoring=acc_scorer)
     print(f"\tAccuracy Score: {nested_score_acc.mean():.2f}")
     print("Plotting the Confusion Matrix")
-    y_pr = cross_val_predict(lr_cl_kn_pca_stratf, x_te, y_te)
+    y_pr = cross_val_predict(lr_cl_kn_pca_stratf, x_te, y_te, cv = outer_cv)
     cormat = confusion_matrix(y_te, y_pr)
     sns.heatmap(cormat, annot=True, fmt = 'g')
     plt.savefig("Implementing Support Vector Classifier on Data with Dummy Encoding with KNN-Imputation and PCA Feature Selection with Stratified K-Fold Cross Validation.png")
@@ -144,7 +144,7 @@ def svm_kn_classifier_kpca_kfold(x_data, y_data, x_tr, x_te, y_tr, y_te):
     nested_score_acc = cross_val_score(svm_cl_kn_pca, X=x_data, y=y_data, cv=outer_cv, scoring=acc_scorer)
     print(f"\tAccuracy Score: {nested_score_acc.mean():.2f}")
     print("Plotting the Confusion Matrix")
-    y_pr = cross_val_predict(svm_cl_kn_pca, x_te, y_te)
+    y_pr = cross_val_predict(svm_cl_kn_pca, x_te, y_te, cv = outer_cv)
     cormat = confusion_matrix(y_te, y_pr)
     sns.heatmap(cormat, annot=True, fmt='g')
     plt.savefig(
@@ -189,7 +189,7 @@ def svm_kn_classifier_kpca_stratfold(x_data, y_data, x_tr, x_te, y_tr, y_te):
     nested_score_acc = cross_val_score(lr_cl_kn_pca_stratf, X=x_data, y=y_data, cv=outer_cv, scoring=acc_scorer)
     print(f"\tAccuracy Score: {nested_score_acc.mean():.2f}")
     print("Plotting the Confusion Matrix")
-    y_pr = cross_val_predict(lr_cl_kn_pca_stratf, x_te, y_te)
+    y_pr = cross_val_predict(lr_cl_kn_pca_stratf, x_te, y_te, cv = outer_cv)
     cormat = confusion_matrix(y_te, y_pr)
     sns.heatmap(cormat, annot=True, fmt='g')
     plt.savefig(
@@ -246,7 +246,7 @@ def svm_kn_classifier_trsvd_kfold(x_data, y_data, x_tr, x_te, y_tr, y_te):
     nested_score_acc = cross_val_score(svm_cl_kn_pca, X=x_data, y=y_data, cv=outer_cv, scoring=acc_scorer)
     print(f"\tAccuracy Score: {nested_score_acc.mean():.2f}")
     print("Plotting the Confusion Matrix")
-    y_pr = cross_val_predict(svm_cl_kn_pca, x_te, y_te)
+    y_pr = cross_val_predict(svm_cl_kn_pca, x_te, y_te, cv = outer_cv)
     cormat = confusion_matrix(y_te, y_pr)
     sns.heatmap(cormat, annot=True, fmt='g')
     plt.savefig(
@@ -291,7 +291,7 @@ def svm_kn_classifier_trsvd_stratfold(x_data, y_data, x_tr, x_te, y_tr, y_te):
     nested_score_acc = cross_val_score(lr_cl_kn_pca_stratf, X=x_data, y=y_data, cv=outer_cv, scoring=acc_scorer)
     print(f"\tAccuracy Score: {nested_score_acc.mean():.2f}")
     print("Plotting the Confusion Matrix")
-    y_pr = cross_val_predict(lr_cl_kn_pca_stratf, x_te, y_te)
+    y_pr = cross_val_predict(lr_cl_kn_pca_stratf, x_te, y_te, cv = outer_cv)
     cormat = confusion_matrix(y_te, y_pr)
     sns.heatmap(cormat, annot=True, fmt='g')
     plt.savefig(
